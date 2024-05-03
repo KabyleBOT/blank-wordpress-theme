@@ -28,3 +28,8 @@ add_action( 'after_setup_theme', 'blank_wordpress_theme_support' );
 
 /* Disable WordPress Admin Bar for all users */
 add_filter( 'show_admin_bar', '__return_false' );
+/* change the rest url to the backend url*/
+add_filter('rest_url', function($url) {
+    return str_replace(WP_HOME, WP_HOME_ADMIN, $url);
+}, 10, 1);
+add_filter('redirect_canonical', '__return_false');
